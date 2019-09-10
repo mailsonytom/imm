@@ -15,19 +15,17 @@ else{
             $result = mysqli_query($conn, $sql);  
         }
       }
-    else{
-        $course_id = $_SESSION['course'];
-        $sem_id = $_SESSION['sem'];
-        $subject_id = $_SESSION['subject'];
-        $sql = "SELECT marks, marks.id, name, student_id FROM students 
-        INNER JOIN marks ON students.id = marks.student_id
-        WHERE course_id='$course_id'
-        AND sem_id='$sem_id'
-        AND marks.subject_id='$subject_id'";
-        $result = mysqli_query($conn, $sql);  
-        while($row = mysqli_fetch_assoc($result)){
-        $data[] = $row;
-        }
+    $course_id = $_SESSION['course'];
+    $sem_id = $_SESSION['sem'];
+    $subject_id = $_SESSION['subject'];
+    $sql = "SELECT marks, marks.id, name, student_id FROM students 
+    INNER JOIN marks ON students.id = marks.student_id
+    WHERE course_id='$course_id'
+    AND sem_id='$sem_id'
+    AND marks.subject_id='$subject_id'";
+    $result = mysqli_query($conn, $sql);  
+    while($row = mysqli_fetch_assoc($result)){
+    $data[] = $row;
     }
 ?>
 

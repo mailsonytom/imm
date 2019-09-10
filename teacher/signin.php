@@ -1,7 +1,7 @@
 <?php include 'connect.php' ?>
 <?php
 	session_start();
-    $username = $password = "";
+    $username = $password = $error ="";
     if($_SERVER['REQUEST_METHOD'] === 'POST'){
         $username = $_POST['email'];
         $password = $_POST['password'];
@@ -11,15 +11,15 @@
             if(password_verify($password, $row['password'])){
                 $_SESSION['user_id'] = $row['id'];
                 echo '<script type="text/javascript">
-                window.location = "selectsub.php"
+                window.location = "teacherdashboard.php"
                  </script>';
             }
             else{
-                    echo "Wrong password. <a href='signin.php'>Click here to try again.</a>";  
+                    $error = "Wrong password.";  
             }
         }
         else{
-                echo "Wrong username. <a href='signin.php'>Click here to try again.</a>";
+                $error = "Wrong username.";
             }
         }
 ?>
@@ -41,6 +41,9 @@
                     <li class="nav-item mr-2">
                         <button class="btn btn-outline-warning">I'm a student</button>
                     </li>
+                    <li class="nav-item mr-2">
+                        <a href ="../admin/signin.php"><button class="btn btn-outline-warning">Admin</button></a>
+                    </li>
                 </ul>
             </div>
         </div>
@@ -48,6 +51,10 @@
     <div class="container-fluid home-cover">
         <div class="row">
             <div class="col-md-4 offset-4 cred-container">
+                <div class="col-md-12 text-center text-info">
+                    <h3>Teacher Sign in</h3>
+                </div>
+                <span class="error"><?php echo $error; ?></span>
                 <form action="" method="POST">
                     <div class="form-group">
                         <label>Email address</label>

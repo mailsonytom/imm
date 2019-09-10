@@ -1,20 +1,10 @@
 <?php include 'connect.php'?>
 <?php session_start();
-
 if (!isset($_SESSION['user_id'])) {
     echo '<script type="text/javascript">
                 window.location = "signin.php"
                  </script>';
 } else {
-    if($_SERVER['REQUEST_METHOD'] === 'POST'){
-      $_SESSION['course'] = $_POST[course];
-      $_SESSION['sem'] = $_POST[sem];
-      $_SESSION['subject'] = $_POST[subject];
-      echo '<script type="text/javascript">
-                    window.location = "addmarks.php"
-                    </script>';
-    }
-    else{
       $teacher_id = $_SESSION['user_id'];
       $sql = "SELECT subject, subject.id, sem, course_name, sem_id, course_id, teacher_id FROM subject 
       INNER JOIN teacher_subject ON subject.id = teacher_subject.subject_id 
@@ -25,7 +15,15 @@ if (!isset($_SESSION['user_id'])) {
       while($row = mysqli_fetch_assoc($result)){
         $data[] = $row;
       }
+    if($_SERVER['REQUEST_METHOD'] === 'POST'){
+      $_SESSION['course'] = $_POST[course];
+      $_SESSION['sem'] = $_POST[sem];
+      $_SESSION['subject'] = $_POST[subject];
+      echo '<script type="text/javascript">
+                    window.location = "addmarks.php"
+                    </script>';
     }
+    
     
 ?>
 <html>

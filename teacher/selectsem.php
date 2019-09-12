@@ -10,7 +10,7 @@ else{
         $_SESSION['course'] = $_POST['course'];
         $_SESSION['sem'] = $_POST['sem'];
         echo '<script type="text/javascript">
-                    window.location = "updatesem.php"
+                    window.location = "studentlist.php"
                      </script>';
        }
     else{

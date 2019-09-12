@@ -51,29 +51,28 @@ else{
         </div>
     </nav>
     <div class="container">
-        <div class="row">
-            <div class="col-md-6 offset-3 text-center mt-4">
-                <h2>Teachers' Dashboard</h2>
+        <div class="row mt-5">
+            <div class="col-md-6 offset-3 text-center">
+                <h3>Select the course</h3>
             </div>
-            <div class="row mt-5">
-                <div class="card col-md-5">
-                    <div class="card-body">
-                        <h5 class="card-title">Add marks</h5>
-                        <h6 class="card-subtitle mb-2 text-muted">Add marks to each student in your class</h6>
-                        <p class="card-text">As a teacher you will be able to add marks for subjects assigned to you to each student in your class. 
-                            The marks will be seen by the students as well as the parents. </p>
-                        <a href="selectsub.php" class="card-link btn btn-info">Students list</a>
-                    </div>
-                </div>
-                <div class="card col-md-5 offset-2">
-                    <div class="card-body">
-                        <h5 class="card-title">View students</h5>
-                        <h6 class="card-subtitle mb-2 text-muted">You can view the list of students</h6>
-                        <p class="card-text">As a teacher you will be able to make comments on students' performances, which can be seen by their parents. 
-                            Also, you'll be able to view the list of students in each course, semester wise. </p>
-                        <a href="selectsem.php" class="card-link btn btn-info">Students list</a>
-                    </div>
-                </div>
+            <div class="col-md-6 offset-3 form-group mt-5">
+                <form action="" method="POST">
+                    <select class="form-control" name="course">
+                        <?php
+                        foreach($course_data as $a){
+                            echo "<option value='".$a['id']."'>".$a['course_name']."</option>";
+                        }
+                        ?>
+                    </select>
+                    <select class="form-control mt-5" name="sem">
+                        <?php
+                        foreach($sem_data as $b){
+                            echo "<option value='".$b['id']."'>".$b['sem']."</option>";
+                        }
+                        ?>
+                    </select>
+                    <input type="submit" value="Submit" class="form-control btn btn-primary mt-4" />
+                </form>     
             </div>
         </div>
     </div>

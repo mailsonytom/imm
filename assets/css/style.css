@@ -2,13 +2,8 @@ body{
     margin: 0;
     padding: 0;
 }
-.home-cover {
-    background-image: url("../images/cover.jpg");
-    background-size: cover;
-    height: 700px;
-}
 .cred-container{
-    background-color: rgba(255, 255, 255, 0.13);
+    background-color: rgb(67, 68, 71);
     margin-top: 100pt;
     padding: 20pt;
     color: #fff;

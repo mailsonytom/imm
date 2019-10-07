@@ -41,10 +41,7 @@ else{
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item mr-2">
-                        <button class="btn btn-outline-warning">Sign out</button>
-                    </li>
-                    <li class="nav-item mr-2">
-                        <button class="btn btn-outline-warning">Add students</button>
+                        <a href="logout.php"><button class="btn btn-outline-warning">Sign out</button></a>
                     </li>
                 </ul>
             </div>

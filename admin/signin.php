@@ -1,27 +1,29 @@
 <?php include 'connect.php' ?>
 <?php
-	session_start();
+session_start();
+if (isset($_SESSION['admin'])) {
+    include 'logout.php';
+} else {
     $username = $password = $error = "";
-    if($_SERVER['REQUEST_METHOD'] === 'POST'){
+    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $username = $_POST['username'];
         $password = $_POST['password'];
         $sql = "SELECT * FROM admin WHERE username = '$username'";
         $result = mysqli_query($conn, $sql);
-        if($row=mysqli_fetch_assoc($result)){
-            if(password_verify($password, $row['password'])){
+        if ($row = mysqli_fetch_assoc($result)) {
+            if (password_verify($password, $row['password'])) {
                 $_SESSION['user_id'] = $row['id'];
                 echo '<script type="text/javascript">
                 window.location = "admindashboard.php"
                  </script>';
+            } else {
+                $error = "Wrong password. ";
             }
-            else{
-                    $error = "Wrong password. ";  
-            }
+        } else {
+            $error = "Wrong username.";
         }
-        else{
-                $error = "Wrong username.";
-            }
-        }
+    }
+}
 ?>
 <html>
 <title>Internal Mark Management</title>

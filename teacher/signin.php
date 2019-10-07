@@ -1,27 +1,29 @@
 <?php include 'connect.php' ?>
 <?php
-	session_start();
-    $username = $password = $error ="";
-    if($_SERVER['REQUEST_METHOD'] === 'POST'){
+session_start();
+if (isset($_SESSION['user_id'])) {
+    include 'logout.php';
+} else {
+    $username = $password = $error = "";
+    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $username = $_POST['email'];
         $password = $_POST['password'];
         $sql = "SELECT * FROM teachers WHERE username = '$username'";
         $result = mysqli_query($conn, $sql);
-        if($row=mysqli_fetch_assoc($result)){
-            if(password_verify($password, $row['password'])){
+        if ($row = mysqli_fetch_assoc($result)) {
+            if (password_verify($password, $row['password'])) {
                 $_SESSION['user_id'] = $row['id'];
                 echo '<script type="text/javascript">
                 window.location = "teacherdashboard.php"
                  </script>';
+            } else {
+                $error = "Wrong password.";
             }
-            else{
-                    $error = "Wrong password.";  
-            }
+        } else {
+            $error = "Wrong username.";
         }
-        else{
-                $error = "Wrong username.";
-            }
-        }
+    }
+}
 ?>
 <html>
 <title>Internal Mark Management</title>
@@ -36,13 +38,13 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item mr-2">
-                        <button class="btn btn-outline-warning">Sign up</button>
+                        <a href="signup.php"><button class="btn btn-outline-warning">Sign up</button></a>
                     </li>
                     <li class="nav-item mr-2">
                         <button class="btn btn-outline-warning">I'm a student</button>
                     </li>
                     <li class="nav-item mr-2">
-                        <a href ="../admin/signin.php"><button class="btn btn-outline-warning">Admin</button></a>
+                        <a href="../admin/signin.php"><button class="btn btn-outline-warning">Admin</button></a>
                     </li>
                 </ul>
             </div>

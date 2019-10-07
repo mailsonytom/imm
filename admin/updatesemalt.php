@@ -1,6 +1,7 @@
 <?php include 'connect.php' ?>
 <?php
 session_start();
+$_SESSION['course'] = 0;
 if (!isset($_SESSION['admin'])) {
     echo '<script type="text/javascript">
                 window.location = "signin.php"

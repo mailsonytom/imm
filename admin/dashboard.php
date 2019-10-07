@@ -1,5 +1,6 @@
 <?php include 'connect.php' ?>
 <?php session_start();
+$_SESSION['course'] = 0;
 if (!isset($_SESSION['admin'])) {
     echo '<script type="text/javascript">
                 window.location = "signin.php"
@@ -39,7 +40,7 @@ if (!isset($_SESSION['admin'])) {
                             <h6 class="card-subtitle mb-2 text-muted">Add new students arrived in S1</h6>
                             <p class="card-text">As the admin of the protal you will be able to add new students to any course into the first semester of the course.
                             </p>
-                            <a href="selectsub.php" class="card-link btn btn-primary">Click here to start</a>
+                            <a href="addstudents.php" class="card-link btn btn-primary">Click here to start</a>
                         </div>
                     </div>
                     <div class="card col-md-5 offset-2">

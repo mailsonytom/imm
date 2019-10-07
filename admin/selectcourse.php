@@ -9,23 +9,18 @@ if (!isset($_SESSION['admin'])) {
 else{
     if($_SERVER['REQUEST_METHOD'] === 'POST'){
         $_SESSION['course'] = $_POST['course'];
-        $_SESSION['sem'] = $_POST['sem'];
         $_SESSION['previous'] = 1;
         echo '<script type="text/javascript">
-                    window.location = "updatesem.php"
+                    window.location = "addstudents.php"
                      </script>';
        }
     else{
         $course_sql = "SELECT * FROM course";
-        $sem_sql = "SELECT * FROM semester";
         $course_result = mysqli_query($conn, $course_sql);
-        $sem_result = mysqli_query($conn, $sem_sql);
         while($row = mysqli_fetch_assoc($course_result)){
             $course_data[] = $row;
         }
-        while($row = mysqli_fetch_assoc($sem_result)){
-            $sem_data[] = $row;
-        }
+
     }
 ?>
 <html>
@@ -63,13 +58,6 @@ else{
                         <?php
                         foreach($course_data as $a){
                             echo "<option value='".$a['id']."'>".$a['course_name']."</option>";
-                        }
-                        ?>
-                    </select>
-                    <select class="form-control mt-5" name="sem">
-                        <?php
-                        foreach($sem_data as $b){
-                            echo "<option value='".$b['id']."'>".$b['sem']."</option>";
                         }
                         ?>
                     </select>

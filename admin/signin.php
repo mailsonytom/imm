@@ -1,6 +1,7 @@
 <?php include 'connect.php' ?>
 <?php
 session_start();
+$_SESSION['course'] = 0;
 if (isset($_SESSION['admin'])) {
     include 'logout.php';
 } else {
@@ -14,7 +15,7 @@ if (isset($_SESSION['admin'])) {
             if (password_verify($password, $row['password'])) {
                 $_SESSION['admin'] = $row['id'];
                 echo '<script type="text/javascript">
-                window.location = "admindashboard.php"
+                window.location = "dashboard.php"
                  </script>';
             } else {
                 $error = "Wrong password. ";

@@ -1,4 +1,6 @@
 <?php
+session_start();
+$_SESSION['course'] = 0;
 $servername = "127.0.0.1";
 $username = "root";
 $password = "root";

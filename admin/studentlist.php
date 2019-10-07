@@ -7,15 +7,16 @@ if (!isset($_SESSION['admin'])) {
 }
 if (!isset($_SESSION['previous']) || !$_SESSION['previous']) {
     echo '<script type="text/javascript">
-    window.location = "selectsem.php"
+    window.location = "semstudentlist.php"
      </script>';
 } else {
     $_SESSION['previous'] = 0;
     $course_id = $_SESSION['course'];
     $sem_id = $_SESSION['sem'];
-    $sql = "SELECT id, name FROM students 
+    $sql = "SELECT admn_no, name FROM students 
         WHERE course_id='$course_id'
         AND sem_id='$sem_id'";
+    echo $sql;
     $result = mysqli_query($conn, $sql);
     while ($row = mysqli_fetch_assoc($result)) {
         $data[] = $row;
@@ -58,7 +59,7 @@ if (!isset($_SESSION['previous']) || !$_SESSION['previous']) {
                             <thead>
                                 <tr>
                                     <th class="text-center">Name</th>
-                                    <th class="text-center">Click to update</th>
+                                    <th class="text-center">Admission number</th>
                                 </tr>
                             </thead>
 
@@ -71,7 +72,7 @@ if (!isset($_SESSION['previous']) || !$_SESSION['previous']) {
                                             <label class="form-control"><?php echo $row['name']; ?></label>
                                         </td>
                                         <td class="col-md-6">
-                                            <a href="updatesemalt.php?id='<?php echo $row['id']; ?>'&sem='<?php echo $sem_id; ?>'" class="btn btn-primary form-control">Passed</a>
+                                            <label class="form-control"><?php echo $row['admn_no']; ?></label>
                                         </td>
                                     </tr>
                                 <?php

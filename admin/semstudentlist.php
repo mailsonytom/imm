@@ -11,7 +11,7 @@ else{
         $_SESSION['sem'] = $_POST['sem'];
         $_SESSION['previous'] = 1;
         echo '<script type="text/javascript">
-                    window.location = "updatesem.php"
+                    window.location = "studentlist.php"
                      </script>';
        }
     else{

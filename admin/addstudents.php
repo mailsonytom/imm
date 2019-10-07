@@ -5,7 +5,7 @@ if (!isset($_SESSION['admin'])) {
                 window.location = "signin.php"
                  </script>';
 }
-if (!isset($_SESSION['course']) || $_SESSION['course'] == 0) {
+if (!isset($_SESSION['course']) || $_SESSION['course'] < 1) {
     echo '<script type="text/javascript">
     window.location = "selectcourse.php"
      </script>';

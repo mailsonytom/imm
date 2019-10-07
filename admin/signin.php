@@ -12,7 +12,7 @@ if (isset($_SESSION['admin'])) {
         $result = mysqli_query($conn, $sql);
         if ($row = mysqli_fetch_assoc($result)) {
             if (password_verify($password, $row['password'])) {
-                $_SESSION['user_id'] = $row['id'];
+                $_SESSION['admin'] = $row['id'];
                 echo '<script type="text/javascript">
                 window.location = "admindashboard.php"
                  </script>';

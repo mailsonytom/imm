@@ -1,6 +1,6 @@
 <?php include 'connect.php'?>
 <?php session_start();
-if (!isset($_SESSION['user_id'])) {
+if (!isset($_SESSION['admin'])) {
     echo '<script type="text/javascript">
                 window.location = "signin.php"
                  </script>';
@@ -9,6 +9,7 @@ else{
     if($_SERVER['REQUEST_METHOD'] === 'POST'){
         $_SESSION['course'] = $_POST['course'];
         $_SESSION['sem'] = $_POST['sem'];
+        $_SESSION['previous'] = 1;
         echo '<script type="text/javascript">
                     window.location = "updatesem.php"
                      </script>';

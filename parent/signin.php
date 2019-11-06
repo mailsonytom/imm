@@ -1,6 +1,5 @@
 <?php include 'connect.php' ?>
 <?php
-
     session_start();
     $username = $password = "";
     if($_SERVER['REQUEST_METHOD'] === 'POST'){

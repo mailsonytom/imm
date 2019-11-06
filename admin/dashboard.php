@@ -21,7 +21,10 @@ if (!isset($_SESSION['admin'])) {
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav ml-auto">
                         <li class="nav-item mr-2">
-                            <a href="logout.php"><button class="btn btn-outline-warning">Sign out</button></a>
+                            <a href="semstudentlist.php" class="btn btn-warning">Student list</a>
+                        </li>
+                        <li class="nav-item mr-2">
+                            <a href="logout.php" class="btn btn-danger">Sign out</a>
                         </li>
                     </ul>
                 </div>
@@ -36,7 +39,7 @@ if (!isset($_SESSION['admin'])) {
                     <div class="card col-md-5">
                         <div class="card-body">
                             <h5 class="card-title">Add Students</h5>
-                            <h6 class="card-subtitle mb-2 text-muted">Add new students arrived in S1</h6>
+                            <h6 class="card-subtitle mb-2 text-muted">Add new students arrived in 1st semester</h6>
                             <p class="card-text">As the admin of the protal you will be able to add new students to any course into the first semester of the course.
                             </p>
                             <a href="addstudents.php" class="card-link btn btn-primary">Click here to start</a>
@@ -47,6 +50,26 @@ if (!isset($_SESSION['admin'])) {
                             <h5 class="card-title">Update Students</h5>
                             <h6 class="card-subtitle mb-2 text-muted">Update the semester of the passed students</h6>
                             <p class="card-text">As the admin of the protal you will be able to update the students pass from one semester.
+                            </p>
+                            <a href="selectsem.php" class="card-link btn btn-primary">Click here to start</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="row mt-5">
+                    <div class="card col-md-5">
+                        <div class="card-body">
+                            <h5 class="card-title">Approve Teachers</h5>
+                            <h6 class="card-subtitle mb-2 text-muted">Approve the pending list of teachers signed up</h6>
+                            <p class="card-text">As the admin of the protal you will be able to approve the signed up teachers.
+                            </p>
+                            <a href="addstudents.php" class="card-link btn btn-primary">Click here to start</a>
+                        </div>
+                    </div>
+                    <div class="card col-md-5 offset-2">
+                        <div class="card-body">
+                            <h5 class="card-title">Assign subjects</h5>
+                            <h6 class="card-subtitle mb-2 text-muted">Assign subjects to teachers</h6>
+                            <p class="card-text">As the admin of the protal you will be able to assign the subjects teachers are teaching in the classes.
                             </p>
                             <a href="selectsem.php" class="card-link btn btn-primary">Click here to start</a>
                         </div>

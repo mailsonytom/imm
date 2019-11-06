@@ -16,7 +16,6 @@ if (!isset($_SESSION['previous']) || !$_SESSION['previous']) {
     $sql = "SELECT admn_no, name FROM students 
         WHERE course_id='$course_id'
         AND sem_id='$sem_id'";
-    echo $sql;
     $result = mysqli_query($conn, $sql);
     while ($row = mysqli_fetch_assoc($result)) {
         $data[] = $row;
@@ -38,10 +37,10 @@ if (!isset($_SESSION['previous']) || !$_SESSION['previous']) {
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav ml-auto">
                         <li class="nav-item mr-2">
-                            <button class="btn btn-outline-warning">Sign out</button>
+                            <a href="dashboard.php" class="btn btn-warning">Admin Dashboard</a>
                         </li>
                         <li class="nav-item mr-2">
-                            <button class="btn btn-outline-warning">Add students</button>
+                            <a href="logout.php" class="btn btn-danger">Sign out</a>
                         </li>
                     </ul>
                 </div>
@@ -89,4 +88,5 @@ if (!isset($_SESSION['previous']) || !$_SESSION['previous']) {
 <?php
 }
 ?>
-</html>
+
+    </html>

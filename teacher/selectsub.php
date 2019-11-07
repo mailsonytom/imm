@@ -6,7 +6,7 @@ if (!isset($_SESSION['teacher'])) {
                  </script>';
 } else {
   $error = "";
-  $teacher_id = $_SESSION['user_id'];
+  $teacher_id = $_SESSION['teacher'];
   $sql = "SELECT subject, subject.id, sem, course_name, sem_id, course_id, teacher_id FROM subject 
       INNER JOIN teacher_subject ON subject.id = teacher_subject.subject_id 
       INNER JOIN semester ON subject.sem_id = semester.id
@@ -27,8 +27,6 @@ if (!isset($_SESSION['teacher'])) {
                     window.location = "addmarks.php"
                     </script>';
   }
-
-
   ?>
   <html>
   <title>Internal Mark Management</title>

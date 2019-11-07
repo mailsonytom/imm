@@ -25,8 +25,14 @@ if (!isset($_SESSION['course']) || $_SESSION['course'] < 1) {
             $email = $_POST['email'];
             $sql = "INSERT INTO students (name, admn_no, father_name, mother_name, address, phone, email, course_id, sem_id)
             VALUES ('$name', '$admno', '$father', '$mother', '$address', '$phone', '$email', '$course_id', '1')";
-            $result = mysqli_query($conn, $sql);
+            mysqli_query($conn, $sql);
             $error = $name." entered successfully into records";
+            $student_id = mysqli_fetch_assoc(mysqli_query($conn, "SELECT id from students WHERE admn_no='$admno'"))['id'];
+            $result = mysqli_query($conn, "SELECT id from subject WHERE sem_id=1");
+            while($row = mysqli_fetch_assoc($result)){
+                $marksql = "INSERT INTO marks (student_id, subject_id, marks) VALUES ('$student_id', '".$row['id']."', 0)";
+                mysqli_query($conn, $marksql);
+            }   
         }
     }
     ?>

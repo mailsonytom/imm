@@ -15,7 +15,12 @@ if (!isset($_SESSION['admin'])) {
         $sem = $row['id'];
         $sem++;
         $sql = "UPDATE students SET sem_id='$sem' WHERE id=" . $id;
-        $result = mysqli_query($conn, $sql);
+        mysqli_query($conn, $sql);
+        $result = mysqli_query($conn, "SELECT id from subject WHERE sem_id='$sem'");
+        while ($row = mysqli_fetch_assoc($result)) {
+            $marksql = "INSERT INTO marks (student_id, subject_id, marks) VALUES ($id, '" . $row['id'] . "', 0)";
+            mysqli_query($conn, $marksql);
+        }
         echo '<script type="text/javascript">
                 window.location = "updatesem.php"
                 </script>';

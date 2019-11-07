@@ -9,11 +9,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $error = "";
     $teacher = $_POST['teacher'];
     $subject = $_POST['subject'];
+    $subject_name = $_POST['subject_name'];
     $sql = "SELECT * FROM teacher_subject WHERE teacher_id = '$teacher' AND subject_id = '$subject'";
     if (mysqli_num_rows(mysqli_query($conn, $sql)) == 0) {
         $insert_sql = "INSERT INTO teacher_subject (teacher_id, subject_id) VALUES ('$teacher', '$subject')";
         mysqli_query($conn, $insert_sql);
-        $error = "Successfully assigned";
+        $error = "Successfully assigned ".$subject_name;
     } else {
         $error = "This subject is already assigned to the teacher";
     }
@@ -87,6 +88,7 @@ while ($sub_row = mysqli_fetch_assoc($sub_result)) {
                             }
                             ?>
                         </select>
+                        <input type="hidden" value="<?php echo $s['subject']; ?>" name="subject_name" id="">
                     </div>
                     <div class="form-group">
                         <input class="form-control btn btn-success" type="submit" value="Add">

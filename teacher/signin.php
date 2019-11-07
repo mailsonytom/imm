@@ -1,7 +1,7 @@
 <?php include 'connect.php' ?>
 <?php
 session_start();
-if (isset($_SESSION['user_id'])) {
+if (isset($_SESSION['teacher'])) {
     include 'logout.php';
 } else {
     $username = $password = $error = "";
@@ -12,7 +12,7 @@ if (isset($_SESSION['user_id'])) {
         $result = mysqli_query($conn, $sql);
         if ($row = mysqli_fetch_assoc($result)) {
             if (password_verify($password, $row['password']) && $row['verified'] == 1) {
-                $_SESSION['user_id'] = $row['id'];
+                $_SESSION['teacher'] = $row['id'];
                 echo '<script type="text/javascript">
                 window.location = "teacherdashboard.php"
                  </script>';

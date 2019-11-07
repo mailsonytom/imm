@@ -1,13 +1,16 @@
 <?php include 'connect.php' ?>
 <?php
-	session_start();
-    $email = $password = $name = $gender = $dob = $error ="";
-    if($_SERVER['REQUEST_METHOD'] === 'POST'){
-            $error = "";
-        if(empty($_POST['name']) || empty($_POST['gender']) || empty($_POST['dob']) || empty($_POST['email']) || empty($_POST['password'])){
+session_start();
+if (isset($_SESSION['teacher'])) {
+    include 'logout.php';
+} else {
+    $email = $password = $name = $gender = $dob = $error = "";
+    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+        $error = "";
+        if (empty($_POST['name']) || empty($_POST['gender']) || empty($_POST['dob']) || empty($_POST['email']) || empty($_POST['password'])) {
             $error = "Please fill in all the details";
         }
-        if($error == ""){
+        if ($error == "") {
             $email = $_POST['email'];
             $name = $_POST['name'];
             $gender = $_POST['gender'];
@@ -20,6 +23,7 @@
                     </script>';
         }
     }
+}
 ?>
 <html>
 <title>Internal Mark Management</title>
@@ -40,7 +44,7 @@
                         <button class="btn btn-outline-warning">I'm a student</button>
                     </li>
                     <li class="nav-item mr-2">
-                        <a href ="../admin/signin.php"><button class="btn btn-outline-warning">Admin</button></a>
+                        <a href="../admin/signin.php"><button class="btn btn-outline-warning">Admin</button></a>
                     </li>
                 </ul>
             </div>

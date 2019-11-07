@@ -38,13 +38,16 @@ if (isset($_SESSION['teacher'])) {
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item mr-2">
-                        <button class="btn btn-outline-warning">Sign up</button>
+                        <a href="signin.php" class="btn btn-outline-warning">Sign in<a/>
                     </li>
                     <li class="nav-item mr-2">
-                        <button class="btn btn-outline-warning">I'm a student</button>
+                        <a href="../student/" class="btn btn-outline-warning">I'm a student<a/>
                     </li>
                     <li class="nav-item mr-2">
-                        <a href="../admin/signin.php"><button class="btn btn-outline-warning">Admin</button></a>
+                        <a href="../parent/" class="btn btn-outline-warning">I'm a parent<a/>
+                    </li>
+                    <li class="nav-item mr-2">
+                        <a href="../admin/" class="btn btn-outline-warning">Admin</a>
                     </li>
                 </ul>
             </div>

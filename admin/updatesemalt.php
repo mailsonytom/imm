@@ -6,7 +6,7 @@ if (!isset($_SESSION['admin'])) {
                 window.location = "signin.php"
                  </script>';
 } else {
-    if (isset($_GET['id'])) {
+    if (isset($_GET['id']) && isset($_GET['sem'])) {
         $id = $_GET['id'];
         $sem_id = $_GET['sem'];
         $semsql = "SELECT id FROM semester where id =" . $sem_id;

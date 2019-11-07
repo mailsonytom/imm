@@ -10,7 +10,6 @@ if (!isset($_SESSION['previous']) || !$_SESSION['previous']) {
     window.location = "selectsem.php"
      </script>';
 } else {
-    $_SESSION['previous'] = 0;
     $course_id = $_SESSION['course'];
     $sem_id = $_SESSION['sem'];
     $sql = "SELECT id, name FROM students 
@@ -38,6 +37,9 @@ if (!isset($_SESSION['previous']) || !$_SESSION['previous']) {
                     <ul class="navbar-nav ml-auto">
                         <li class="nav-item mr-2">
                             <a href="dashboard.php" class="btn btn-warning">Admin Dashboard</a>
+                        </li>
+                        <li class="nav-item mr-2">
+                            <a href="resetprevious.php" class="btn btn-warning">Update Complete</a>
                         </li>
                         <li class="nav-item mr-2">
                             <a href="logout.php" class="btn btn-danger">Sign out</a>

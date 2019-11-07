@@ -62,7 +62,7 @@ if (!isset($_SESSION['admin'])) {
                             <h6 class="card-subtitle mb-2 text-muted">Approve the pending list of teachers signed up</h6>
                             <p class="card-text">As the admin of the protal you will be able to approve the signed up teachers.
                             </p>
-                            <a href="addstudents.php" class="card-link btn btn-primary">Click here to start</a>
+                            <a href="teacherslist.php" class="card-link btn btn-primary">Click here to start</a>
                         </div>
                     </div>
                     <div class="card col-md-5 offset-2">

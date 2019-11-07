@@ -51,35 +51,32 @@ if (!isset($_SESSION['previous']) || !$_SESSION['previous']) {
                 <div class="col-md-8 offset-2">
                     <div class="col-md-12 text-center">
                         <h3>List of Semester <?php echo $sem_id; ?> Students</h3>
-                        <p>Update sem for each student or update everyone together</p>
                     </div>
-                    <form action="" method="POST">
-                        <table class="table">
-                            <thead>
-                                <tr>
-                                    <th class="text-center">Name</th>
-                                    <th class="text-center">Admission number</th>
-                                </tr>
-                            </thead>
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th class="text-center">Name</th>
+                                <th class="text-center">Admission number</th>
+                            </tr>
+                        </thead>
 
-                            <tbody class="form-group">
-                                <?php
-                                    foreach ($data as $row) {
-                                        ?>
-                                    <tr>
-                                        <td class="col-md-6">
-                                            <label class="form-control"><?php echo $row['name']; ?></label>
-                                        </td>
-                                        <td class="col-md-6">
-                                            <label class="form-control"><?php echo $row['admn_no']; ?></label>
-                                        </td>
-                                    </tr>
-                                <?php
-                                    }
+                        <tbody class="form-group">
+                            <?php
+                                foreach ($data as $row) {
                                     ?>
-                            </tbody>
-                        </table>
-                    </form>
+                                <tr>
+                                    <td class="col-md-6">
+                                        <label class="form-control"><?php echo $row['name']; ?></label>
+                                    </td>
+                                    <td class="col-md-6">
+                                        <label class="form-control"><?php echo $row['admn_no']; ?></label>
+                                    </td>
+                                </tr>
+                            <?php
+                                }
+                                ?>
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </div>

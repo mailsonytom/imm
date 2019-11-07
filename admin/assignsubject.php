@@ -6,14 +6,17 @@ if (!isset($_SESSION['admin'])) {
                  </script>';
 }
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $error = "";
     $teacher = $_POST['teacher'];
     $subject = $_POST['subject'];
     $sql = "SELECT * FROM teacher_subject WHERE teacher_id = '$teacher' AND subject_id = '$subject'";
-    if(mysqli_num_rows(mysqli_query($conn, $sql)) == 0){
+    if (mysqli_num_rows(mysqli_query($conn, $sql)) == 0) {
         $insert_sql = "INSERT INTO teacher_subject (teacher_id, subject_id) VALUES ('$teacher', '$subject')";
         mysqli_query($conn, $insert_sql);
+        $error = "Successfully assigned";
+    } else {
+        $error = "This subject is already assigned to the teacher";
     }
-    
 }
 $course_id = $_SESSION['course'];
 $sem_id = $_SESSION['sem'];
@@ -59,6 +62,7 @@ while ($sub_row = mysqli_fetch_assoc($sub_result)) {
                 <h3 class="text-center">Assign subjects for teachers</h3>
             </div>
             <div class="col-md-8 offset-2">
+                <span class="error"><?php echo $error; ?></span>
                 <form action="" method="POST">
                     <div class="form-group">
                         <label>Select teacher</label>

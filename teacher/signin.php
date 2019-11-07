@@ -11,12 +11,15 @@ if (isset($_SESSION['user_id'])) {
         $sql = "SELECT * FROM teachers WHERE username = '$username'";
         $result = mysqli_query($conn, $sql);
         if ($row = mysqli_fetch_assoc($result)) {
-            if (password_verify($password, $row['password'])) {
+            if (password_verify($password, $row['password']) && $row['verified'] == 1) {
                 $_SESSION['user_id'] = $row['id'];
                 echo '<script type="text/javascript">
                 window.location = "teacherdashboard.php"
                  </script>';
-            } else {
+            }elseif($row['verified'] == 0){
+                $error = "Your account is not verified. Please contact the administrator";
+            } 
+            else {
                 $error = "Wrong password.";
             }
         } else {
@@ -41,10 +44,10 @@ if (isset($_SESSION['user_id'])) {
                         <a href="signup.php"><button class="btn btn-outline-warning">Sign up</button></a>
                     </li>
                     <li class="nav-item mr-2">
-                        <button class="btn btn-outline-warning">I'm a student</button>
+                        <a href="../student/" class="btn btn-outline-warning">I'm a student</a>
                     </li>
                     <li class="nav-item mr-2">
-                        <a href="../admin/signin.php"><button class="btn btn-outline-warning">Admin</button></a>
+                        <a href="../admin/"><button class="btn btn-outline-warning">Admin</button></a>
                     </li>
                 </ul>
             </div>

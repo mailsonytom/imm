@@ -38,10 +38,10 @@ if (isset($_SESSION['admin'])) {
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item mr-2">
-                        <button class="btn btn-outline-warning">Teacher sign in</button>
+                        <a href="../teacher/" class="btn btn-warning">Teacher sign in</a>
                     </li>
                     <li class="nav-item mr-2">
-                        <button class="btn btn-outline-warning">I'm a student</button>
+                        <a href="../student/" class="btn btn-warning">I'm a student</a>
                     </li>
                 </ul>
             </div>

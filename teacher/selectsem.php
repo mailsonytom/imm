@@ -39,7 +39,7 @@ if (!isset($_SESSION['teacher'])) {
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav ml-auto">
                         <li class="nav-item mr-2">
-                            <a href="teacherdashboard.php" class="btn btn-warning">Admin Dashboard</a>
+                            <a href="teacherdashboard.php" class="btn btn-warning">Teacher Dashboard</a>
                         </li>
                         <li class="nav-item mr-2">
                             <a href="logout.php" class="btn btn-danger">Sign out</a>

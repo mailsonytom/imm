@@ -10,9 +10,9 @@ if (isset($_SESSION['teacher'])) {
         if (empty($_POST['name']) || empty($_POST['gender']) || empty($_POST['dob']) || empty($_POST['email']) || empty($_POST['password'])) {
             $error = "Please fill in all the details";
         }
-        if ($error == "") {
-            $email = $_POST['email'];
-            $name = $_POST['name'];
+        else{
+            $email = $conn->real_escape_string($_POST['email']);
+            $name = $conn->real_escape_string($_POST['name']);
             $gender = $_POST['gender'];
             $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
             $dob = $_POST['dob'];

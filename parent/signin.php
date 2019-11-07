@@ -6,7 +6,7 @@ if (isset($_SESSION['parent'])) {
 } else {
     $username = $password = $error = "";
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-        $username = $_POST['admn_no'];
+        $username = $conn->real_escape_string($_POST['admn_no']);
         $password = $_POST['password'];
         $sql = "SELECT * FROM students WHERE admn_no = '$username'";
         $result = mysqli_query($conn, $sql);

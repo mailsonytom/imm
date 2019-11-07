@@ -16,15 +16,16 @@ if (!isset($_SESSION['course']) || $_SESSION['course'] < 1) {
         if (empty($_POST['name']) || empty($_POST['admno']) || empty($_POST['father']) || empty($_POST['mother']) || empty($_POST['address']) || empty($_POST['phone']) || empty($_POST['email'])) {
             $error = "Please fill out all the fields";
         } else {
-            $name = $_POST['name'];
-            $admno = $_POST['admno'];
-            $father = $_POST['father'];
-            $mother = $_POST['mother'];
-            $address = $_POST['address'];
-            $phone = $_POST['phone'];
-            $email = $_POST['email'];
-            $sql = "INSERT INTO students (name, admn_no, father_name, mother_name, address, phone, email, course_id, sem_id)
-            VALUES ('$name', '$admno', '$father', '$mother', '$address', '$phone', '$email', '$course_id', '1')";
+            $name = $conn->real_escape_string($_POST['name']);
+            $admno = $conn->real_escape_string($_POST['admno']);
+            $father = $conn->real_escape_string($_POST['father']);
+            $mother = $conn->real_escape_string($_POST['mother']);
+            $address = $conn->real_escape_string($_POST['address']);
+            $phone = $conn->real_escape_string($_POST['phone']);
+            $email = $conn->real_escape_string($_POST['email']);
+            $parent_pass = password_hash($phone, PASSWORD_DEFAULT);
+            $sql = "INSERT INTO students (name, admn_no, father_name, mother_name, address, phone, email, course_id, sem_id, parent_pass)
+            VALUES ('$name', '$admno', '$father', '$mother', '$address', '$phone', '$email', '$course_id', '1', '$parent_pass')";
             mysqli_query($conn, $sql);
             $error = $name." entered successfully into records";
             $student_id = mysqli_fetch_assoc(mysqli_query($conn, "SELECT id from students WHERE admn_no='$admno'"))['id'];

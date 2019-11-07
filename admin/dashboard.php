@@ -71,7 +71,7 @@ if (!isset($_SESSION['admin'])) {
                             <h6 class="card-subtitle mb-2 text-muted">Assign subjects to teachers</h6>
                             <p class="card-text">As the admin of the protal you will be able to assign the subjects teachers are teaching in the classes.
                             </p>
-                            <a href="selectsem.php" class="card-link btn btn-primary">Click here to start</a>
+                            <a href="assignsubject.php" class="card-link btn btn-primary">Click here to start</a>
                         </div>
                     </div>
                 </div>

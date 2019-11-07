@@ -42,7 +42,7 @@ if (isset($_SESSION['parent'])) {
                         <a href="../student/" class="btn btn-outline-warning">I'm a student</a>
                     </li>
                     <li class="nav-item mr-2">
-                        <a href="../parent/" class="btn btn-outline-warning">I'm a teacher<a />
+                        <a href="../teacher/" class="btn btn-outline-warning">I'm a teacher<a />
                     </li>
                 </ul>
             </div>

@@ -8,7 +8,7 @@ if (!isset($_SESSION['admin'])) {
 
 $course_id = $_SESSION['course'];
 $sem_id = $_SESSION['sem'];
-$sql = "SELECT name, verified FROM teachers";
+$sql = "SELECT id, name, verified FROM teachers";
 $result = mysqli_query($conn, $sql);
 while ($row = mysqli_fetch_assoc($result)) {
     if ($row['verified'] == 1) {
@@ -57,7 +57,7 @@ while ($row = mysqli_fetch_assoc($result)) {
                     ?>
                     <div class="alert alert-info" role="alert">
                     <?php echo $u['name']; ?>
-                    <a href="<?php echo $u['id']; ?>" class="badge badge-success ml-5">Click here to approve</a>
+                    <a href="approveteacher.php?id=<?php echo $u['id'];?>" class="badge badge-success ml-5">Click here to approve</a>
                 </div>
                 <?php 
                 }

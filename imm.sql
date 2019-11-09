@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost:3306
--- Generation Time: Nov 09, 2019 at 10:03 AM
+-- Generation Time: Nov 09, 2019 at 10:09 AM
 -- Server version: 5.5.42
 -- PHP Version: 7.0.0
 
@@ -11,7 +11,7 @@ SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
 
 --
--- Database: `ows`
+-- Database: `imm`
 --
 
 -- --------------------------------------------------------
@@ -31,20 +31,7 @@ CREATE TABLE `admin` (
 --
 
 INSERT INTO `admin` (`id`, `username`, `password`) VALUES
-(1, 'admin', '$2y$10$Y41RUXFgKELmVGWb9Snj6O474dnWecUUUlkOlazRpemLZfDzsCgSW');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `cart`
---
-
-CREATE TABLE `cart` (
-  `id` int(11) NOT NULL,
-  `user_id` int(11) NOT NULL,
-  `product_id` int(11) NOT NULL,
-  `count` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+(1, 'admin', '$2y$10$cGuHIMA/.dk1IPibScK6re.qo50WEdF6QafN3R40UoECJUoxptfqG');
 
 -- --------------------------------------------------------
 
@@ -54,152 +41,255 @@ CREATE TABLE `cart` (
 
 CREATE TABLE `comments` (
   `id` int(11) NOT NULL,
-  `comment` varchar(3000) NOT NULL,
-  `product_id` int(11) NOT NULL,
-  `user_id` int(11) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=latin1;
+  `student_id` int(11) NOT NULL,
+  `teacher_id` int(11) NOT NULL,
+  `comment` varchar(1000) NOT NULL,
+  `date` varchar(30) NOT NULL,
+  `comment_by` varchar(40) NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `comments`
 --
 
-INSERT INTO `comments` (`id`, `comment`, `product_id`, `user_id`) VALUES
-(2, 'My comment', 10, 12),
-(3, 'My comment', 10, 12),
-(4, 'My comment', 10, 12),
-(5, 'fs', 10, 12),
-(6, 'fdas', 10, 12),
-(7, 'fas', 10, 12),
-(8, 'fas', 10, 12);
+INSERT INTO `comments` (`id`, `student_id`, `teacher_id`, `comment`, `date`, `comment_by`) VALUES
+(6, 36, 0, 'Parent commented', '07-11-2019 21:31:38', 'Parent'),
+(7, 36, 0, 'Hi parent. I''m happy to set ', '07-11-2019 21:49:03', ''),
+(8, 36, 0, 'Thid''s buye', '07-11-2019 21:49:20', ''),
+(9, 36, 0, 'Thid''s buye', '07-11-2019 21:50:29', 'Swathi Cherian'),
+(10, 36, 0, 'He is very nice in class', '08-11-2019 01:10:31', 'gokul');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `dealer`
+-- Table structure for table `course`
 --
 
-CREATE TABLE `dealer` (
+CREATE TABLE `course` (
   `id` int(11) NOT NULL,
-  `name` varchar(200) NOT NULL,
-  `owner` varchar(200) NOT NULL,
-  `email` varchar(200) NOT NULL,
-  `password` varchar(1000) NOT NULL,
-  `phone` varchar(200) NOT NULL,
-  `location` varchar(200) NOT NULL,
-  `address` varchar(500) NOT NULL,
-  `bio` varchar(1000) NOT NULL,
-  `approved` tinyint(1) NOT NULL
+  `course_name` varchar(200) NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `course`
+--
+
+INSERT INTO `course` (`id`, `course_name`) VALUES
+(1, 'BCA'),
+(2, 'BBA'),
+(3, 'BCOM');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `marks`
+--
+
+CREATE TABLE `marks` (
+  `id` int(11) NOT NULL,
+  `student_id` int(11) NOT NULL,
+  `subject_id` int(11) NOT NULL,
+  `marks` int(11) NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=67 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `marks`
+--
+
+INSERT INTO `marks` (`id`, `student_id`, `subject_id`, `marks`) VALUES
+(19, 36, 1, 0),
+(20, 36, 2, 0),
+(21, 36, 3, 0),
+(22, 36, 4, 0),
+(23, 36, 5, 0),
+(24, 36, 6, 0),
+(37, 37, 1, 0),
+(38, 37, 2, 0),
+(39, 37, 3, 0),
+(40, 37, 4, 0),
+(41, 37, 5, 0),
+(42, 37, 6, 0),
+(43, 36, 1, 0),
+(44, 36, 2, 0),
+(45, 36, 3, 0),
+(46, 36, 4, 0),
+(47, 36, 5, 0),
+(48, 36, 6, 0),
+(49, 36, 1, 0),
+(50, 36, 2, 0),
+(51, 36, 3, 0),
+(52, 36, 4, 0),
+(53, 36, 5, 0),
+(54, 36, 6, 0),
+(55, 37, 1, 0),
+(56, 37, 2, 0),
+(57, 37, 3, 0),
+(58, 37, 4, 0),
+(59, 37, 5, 0),
+(60, 37, 6, 0),
+(61, 38, 1, 0),
+(62, 38, 2, 0),
+(63, 38, 3, 0),
+(64, 38, 4, 0),
+(65, 38, 5, 0),
+(66, 38, 6, 0);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `semester`
+--
+
+CREATE TABLE `semester` (
+  `id` int(11) NOT NULL,
+  `sem` varchar(20) NOT NULL
 ) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `dealer`
+-- Dumping data for table `semester`
 --
 
-INSERT INTO `dealer` (`id`, `name`, `owner`, `email`, `password`, `phone`, `location`, `address`, `bio`, `approved`) VALUES
-(1, 'Tony', 'Sherona', 'she@she.com', '$2y$10$FWZbX1a0BSj/YE2NcCHKBO3qbhXF2fYpJP7Y75jL/u/mSEBHEs3jS', '2341', 'location', 'Address', 'Bio', 1),
-(2, 'sdfef', '', '', '$2y$10$rSMhpXQZ3KPlqghHVaaaeekNBsUBzVvpPlN05WlUTvymZ5DxPn8.i', '', 'location', '', '', 1),
-(3, 'Tony Tom', 'Tony', 't@t.com', '$2y$10$RhaLmIvEYqPDC1Nd8XEF9OKxBdf/oCJfj.y8Bpz1iuC7eIhFvdIZm', '1234', 'location', 'Address', 'Bio', 1),
-(4, 'Sony Tom', 'Tony', 'mailsonytom@gmail.com', '$2y$10$k.L1NoMQ/AsbrZd9n3pVN.Mn2X.bASlnG4KXUHL7YxFRTfBQg/S9a', '90988776765', 'location', 'Chundakkattil House ,Athirampuzha', 'Bussiness man', 0),
-(5, 'Sony', 'tony', 'sonytom@gmail.com', '$2y$10$3cdbGZXUJzTVibPFdjxFVOy1emMNz2w7Y6o0he1xJwAgtBuD3zKUG', '989898768678', 'location', 'Chundakkattil House ,Athirampuzha', 'Bussiness man', 0),
-(6, 'Sony', 'Tom', 'sony1@gmail.com', '$2y$10$n.00.CgjQ10aLKLlzIM2Gu/kGAxiklcWoxoMiqLHdtOTlT6F7AlPe', '989878767', 'location', 'Chundakkattil House ,Athirampuzha', 'Bussiness man', 1);
+INSERT INTO `semester` (`id`, `sem`) VALUES
+(1, 'S1'),
+(2, 'S2'),
+(3, 'S3'),
+(4, 'S4'),
+(5, 'S5'),
+(6, 'S6');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `products`
+-- Table structure for table `students`
 --
 
-CREATE TABLE `products` (
+CREATE TABLE `students` (
+  `id` int(11) NOT NULL,
+  `course_id` int(11) NOT NULL,
+  `sem_id` int(11) NOT NULL,
+  `name` varchar(100) NOT NULL,
+  `admn_no` varchar(100) NOT NULL,
+  `father_name` varchar(200) NOT NULL,
+  `mother_name` varchar(200) NOT NULL,
+  `address` varchar(300) NOT NULL,
+  `phone` varchar(15) NOT NULL,
+  `email` varchar(100) NOT NULL,
+  `parent_pass` varchar(500) NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=39 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `students`
+--
+
+INSERT INTO `students` (`id`, `course_id`, `sem_id`, `name`, `admn_no`, `father_name`, `mother_name`, `address`, `phone`, `email`, `parent_pass`) VALUES
+(36, 1, 1, 'Tony', '100', 'Tom', 'Kochurani', 'Home', '9343244543', 'mail@gmail.com', '$2y$10$Gura92vhU5ohzw8mUs0wjO1e5./53Y8QLKVq9Lt8PzT/cuIfVm9Hu'),
+(37, 1, 1, 'Gokul', '101', 'Gokuls father', 'Gokuls mother', 'Home', '123455', 'gokul@gmail.com', '$2y$10$MHx6i2vI1/nkkO6pXf0ir.jFKDH4RgoWkpEqKQFMoVhfho17lrOpK'),
+(38, 1, 1, 'Tony', '109', 'Father', 'Mother', 'Chundakkattil House, Athirampuzha P O', '9495532248', 'tony@artincodes.com', '$2y$10$smtCslsnit7q1MVmJ8JcneZVmh7MH..sTm2HNOH5SA09C8ladTWii');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `subject`
+--
+
+CREATE TABLE `subject` (
+  `id` int(11) NOT NULL,
+  `subject` varchar(100) NOT NULL,
+  `course_id` int(11) NOT NULL,
+  `sem_id` int(11) NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=36 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `subject`
+--
+
+INSERT INTO `subject` (`id`, `subject`, `course_id`, `sem_id`) VALUES
+(1, 'English-I (Common)', 1, 1),
+(2, 'Mathematics (Complementary)', 1, 1),
+(3, 'Basic Statistics (Complementary)', 1, 1),
+(4, 'Introduction to Computers (Core)', 1, 1),
+(5, 'Methodology of Programming and programming in C (Core)', 1, 1),
+(6, 'Software Lab I (Core)', 1, 1),
+(7, 'English-II (Common)', 1, 2),
+(8, 'Discrete Mathematics ( Complementary)', 1, 2),
+(9, 'Accounting & Programming in Cobol (Core)', 1, 2),
+(10, 'Data Structures (Core)', 1, 2),
+(11, 'Fundamentals of Digital Systems (Core)', 1, 2),
+(12, 'Software Lab- II (Core)', 1, 2),
+(13, 'Advanced Statistical Methods (Complementary)', 1, 3),
+(14, 'Design and Analysis Of Algorithms (Core)', 1, 3),
+(15, 'Computer Organization & Architecture. (Core)', 1, 3),
+(16, 'Computer Graphics (Core)', 1, 3),
+(17, 'Object Oriented Programming and C++ (Core)', 1, 3),
+(18, 'Software Lab III (Core)', 1, 3),
+(19, 'Operational Research (Complementary)', 1, 4),
+(20, 'Microprocessor & PC Hardware (Core)', 1, 4),
+(21, 'System Analysis & Design (Core)', 1, 4),
+(22, 'Database Management Systems (Core)', 1, 4),
+(23, 'Visual Programming Techniques (Core)', 1, 4),
+(24, 'Software Lab IV (Core)', 1, 4),
+(25, 'Computer Networks (core)', 1, 5),
+(26, 'Operating Systems (core)', 1, 5),
+(27, 'Java Programming (core)', 1, 5),
+(28, 'Open Course (core)', 1, 5),
+(29, 'Software Lab V (core)', 1, 5),
+(30, 'Software Development Lab I (Mini Project) (core)', 1, 5),
+(31, 'Web Technology(core)', 1, 6),
+(32, 'Software Engineering (core)', 1, 6),
+(33, 'Elective (core)', 1, 6),
+(34, 'Seminar', 1, 6),
+(35, 'Software Development Lab II ( Main Project)', 1, 6);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `teachers`
+--
+
+CREATE TABLE `teachers` (
   `id` int(11) NOT NULL,
   `name` varchar(200) NOT NULL,
-  `brand` varchar(200) NOT NULL,
-  `code` varchar(200) NOT NULL,
-  `category` varchar(200) NOT NULL,
-  `gender` varchar(200) NOT NULL,
-  `type` varchar(200) NOT NULL,
-  `price` varchar(200) NOT NULL,
-  `image` varchar(200) NOT NULL,
-  `description` varchar(1000) NOT NULL,
-  `dealer_id` int(11) NOT NULL,
-  `count` int(11) NOT NULL
+  `username` varchar(200) NOT NULL,
+  `password` varchar(1000) NOT NULL,
+  `verified` tinyint(1) NOT NULL,
+  `gender` varchar(20) NOT NULL,
+  `dob` varchar(50) NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `teachers`
+--
+
+INSERT INTO `teachers` (`id`, `name`, `username`, `password`, `verified`, `gender`, `dob`) VALUES
+(9, 'Swathi Cherian', 'swati@gmail.com', '$2y$10$v3GKQrC8RygqE84laTemfeiojNzXgyySjyW80vXu5stmKMV.gUDka', 1, 'female', '16/12/1993'),
+(10, 'gokul', 'gokul@gmail.com', '$2y$10$o6JkJAdEix4TjBap.V4bHelHU3V8Icpcv1BnTcGpUVJ7CJ4.uQ56e', 1, 'male', '16-Dec-1993');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `teacher_subject`
+--
+
+CREATE TABLE `teacher_subject` (
+  `id` int(11) NOT NULL,
+  `teacher_id` int(11) NOT NULL,
+  `subject_id` int(11) NOT NULL
 ) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `products`
+-- Dumping data for table `teacher_subject`
 --
 
-INSERT INTO `products` (`id`, `name`, `brand`, `code`, `category`, `gender`, `type`, `price`, `image`, `description`, `dealer_id`, `count`) VALUES
-(6, 'Timex', 'Timex', 'TT45', 'analog', 'male', 'strap', '34', 'TT45.jpg', 'The watch face of industry', 3, 26),
-(7, 'Cisco', 'Cisco', 'CS43', 'analog', 'male', 'strap', '23', 'CS43.jpg', 'Desc', 3, 28),
-(8, 'iNdian', 'Indian', 'IND43', 'analog', 'male', 'strap', '34', 'IND43.jpg', 'FKDASLJ', 3, 10),
-(9, 'FJAKL', 'FOURFK', 'FD43', 'analog', 'male', 'strap', '34', 'FD43.jpg', 'FLSAJ', 3, 28),
-(10, 'KFJK', 'FKUK', 'KJJ98', 'analog', 'male', 'strap', '34', 'KJJ98.jpg', 'FKASJ', 3, 10),
-(11, 'The new watch', 'Thenew brand', '12Add', 'analog', 'male', 'strap', '12', '12Add.jpg', 'flkajf', 3, 19),
-(12, 'mens watch', 'Seiko', '098989', 'analog', 'male', 'chain', '2300', '098989.jpg', 'A good watch for men', 6, 19),
-(13, 'Trett', 'Test', 'A2343', 'analog', 'male', 'strap', '1234', 'A2343.jpg', 'fsd', 6, 32),
-(14, 'fldsakj', 'fsadlk', 'lfkjdsa', 'analog', 'male', 'strap', '21', 'lfkjdsa.jpg', 'fldsjk', 6, 211),
-(15, 'Seiko', 'Test product', 'S4kkj', 'analog', 'male', 'strap', '21', 'S4kkj.jpg', 'fdklsajl', 6, 232);
-
--- --------------------------------------------------------
-
---
--- Table structure for table `purchases`
---
-
-CREATE TABLE `purchases` (
-  `id` int(11) NOT NULL,
-  `product_id` int(11) NOT NULL,
-  `user_id` int(11) NOT NULL,
-  `count` int(11) NOT NULL,
-  `date` varchar(100) NOT NULL,
-  `shipped` tinyint(1) NOT NULL,
-  `price` int(11) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `purchases`
---
-
-INSERT INTO `purchases` (`id`, `product_id`, `user_id`, `count`, `date`, `shipped`, `price`) VALUES
-(1, 7, 12, 1, '8.308641975296296296', 1, 23),
-(2, 6, 12, 2, '8.308641975296296296', 1, 34),
-(3, 7, 12, 1, '8.308641975296296296', 1, 23),
-(4, 8, 12, 1, '12/13/1992', 1, 34),
-(5, 6, 12, 1, '8.308641975296296296', 1, 34),
-(6, 8, 13, 1, '8.011904761892857142', 0, 34),
-(7, 9, 12, 1, '8.011904761892857142', 0, 34),
-(8, 7, 14, 1, '7.735632183896551724', 0, 23),
-(9, 7, 14, 1, '7.735632183896551724', 0, 23),
-(10, 9, 14, 1, '7.735632183896551724', 0, 34),
-(11, 9, 14, 1, '7.735632183896551724', 0, 34),
-(12, 15, 14, 1, '7.735632183896551724', 1, 21),
-(13, 12, 14, 1, '7.735632183896551724', 0, 2300);
-
--- --------------------------------------------------------
-
---
--- Table structure for table `users`
---
-
-CREATE TABLE `users` (
-  `id` int(11) NOT NULL,
-  `name` varchar(300) NOT NULL,
-  `email` varchar(300) NOT NULL,
-  `password` varchar(300) NOT NULL,
-  `phone` varchar(30) NOT NULL,
-  `address` varchar(1000) NOT NULL,
-  `gender` varchar(100) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `users`
---
-
-INSERT INTO `users` (`id`, `name`, `email`, `password`, `phone`, `address`, `gender`) VALUES
-(11, 'Tony', 't@t.com', '$2y$10$qy9EbmIfzhWtAGBjy3m6KumSHAuYS/9/XCVj7OjHcpvhV4hm9qHzC', '123', 'lfkdjsa', 'male'),
-(12, 'Maria', 'm@m.com', '$2y$10$rCrumdjJlWsarnAkcte7AuOnMg1OKX.mkLZ2hmAmua6PFPAuKJZ5K', '1234', '1234', 'male'),
-(13, 'Kevin Jose Minj', 'kevinjoseminj98@gmail.com', '$2y$10$s06ZX4uBm5rwgynEHoQ.Q.wcFrlSZfbzjS2oV.h0CNm4rPqC5WGo6', '9495031479', 'Murickal (H)', 'male'),
-(14, 'Sony Tom', 'mailsonytom@gmail.com', '$2y$10$6lu/cyrmq33RWRZB/Ly9IuzkjwPPQdI.7x7jjA/uPAw8B.ou.f4Qi', '8078518030', 'Chundakkattil House ,Athirampuzha', 'male');
+INSERT INTO `teacher_subject` (`id`, `teacher_id`, `subject_id`) VALUES
+(7, 9, 1),
+(8, 9, 2),
+(9, 9, 3),
+(10, 9, 4),
+(11, 9, 5),
+(12, 9, 6),
+(13, 9, 8),
+(14, 9, 9),
+(15, 10, 4);
 
 --
 -- Indexes for dumped tables
@@ -212,40 +302,69 @@ ALTER TABLE `admin`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `cart`
---
-ALTER TABLE `cart`
-  ADD PRIMARY KEY (`id`);
-
---
 -- Indexes for table `comments`
 --
 ALTER TABLE `comments`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `student_id` (`student_id`),
+  ADD KEY `student_id_2` (`student_id`),
+  ADD KEY `teacher_id` (`teacher_id`);
+
+--
+-- Indexes for table `course`
+--
+ALTER TABLE `course`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `dealer`
+-- Indexes for table `marks`
 --
-ALTER TABLE `dealer`
+ALTER TABLE `marks`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `student_id` (`student_id`),
+  ADD KEY `subject_id` (`subject_id`),
+  ADD KEY `student_id_2` (`student_id`),
+  ADD KEY `subject_id_2` (`subject_id`);
+
+--
+-- Indexes for table `semester`
+--
+ALTER TABLE `semester`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `products`
+-- Indexes for table `students`
 --
-ALTER TABLE `products`
-  ADD PRIMARY KEY (`id`);
+ALTER TABLE `students`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `admn_no` (`admn_no`),
+  ADD KEY `sem_id` (`sem_id`);
 
 --
--- Indexes for table `purchases`
+-- Indexes for table `subject`
 --
-ALTER TABLE `purchases`
-  ADD PRIMARY KEY (`id`);
+ALTER TABLE `subject`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `course_id` (`course_id`),
+  ADD KEY `sem_id` (`sem_id`);
 
 --
--- Indexes for table `users`
+-- Indexes for table `teachers`
 --
-ALTER TABLE `users`
-  ADD PRIMARY KEY (`id`);
+ALTER TABLE `teachers`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `username` (`username`);
+
+--
+-- Indexes for table `teacher_subject`
+--
+ALTER TABLE `teacher_subject`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `teacher_id` (`teacher_id`),
+  ADD KEY `subject_id` (`subject_id`),
+  ADD KEY `teacher_id_2` (`teacher_id`),
+  ADD KEY `subject_id_2` (`subject_id`),
+  ADD KEY `teacher_id_3` (`teacher_id`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -257,32 +376,78 @@ ALTER TABLE `users`
 ALTER TABLE `admin`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
 --
--- AUTO_INCREMENT for table `cart`
---
-ALTER TABLE `cart`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
---
 -- AUTO_INCREMENT for table `comments`
 --
 ALTER TABLE `comments`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=9;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=11;
 --
--- AUTO_INCREMENT for table `dealer`
+-- AUTO_INCREMENT for table `course`
 --
-ALTER TABLE `dealer`
+ALTER TABLE `course`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
+--
+-- AUTO_INCREMENT for table `marks`
+--
+ALTER TABLE `marks`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=67;
+--
+-- AUTO_INCREMENT for table `semester`
+--
+ALTER TABLE `semester`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=7;
 --
--- AUTO_INCREMENT for table `products`
+-- AUTO_INCREMENT for table `students`
 --
-ALTER TABLE `products`
+ALTER TABLE `students`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=39;
+--
+-- AUTO_INCREMENT for table `subject`
+--
+ALTER TABLE `subject`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=36;
+--
+-- AUTO_INCREMENT for table `teachers`
+--
+ALTER TABLE `teachers`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=11;
+--
+-- AUTO_INCREMENT for table `teacher_subject`
+--
+ALTER TABLE `teacher_subject`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=16;
 --
--- AUTO_INCREMENT for table `purchases`
+-- Constraints for dumped tables
 --
-ALTER TABLE `purchases`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=14;
+
 --
--- AUTO_INCREMENT for table `users`
+-- Constraints for table `comments`
 --
-ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=15;
+ALTER TABLE `comments`
+  ADD CONSTRAINT `comments_ibfk_1` FOREIGN KEY (`student_id`) REFERENCES `students` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `marks`
+--
+ALTER TABLE `marks`
+  ADD CONSTRAINT `marks_ibfk_1` FOREIGN KEY (`student_id`) REFERENCES `students` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `marks_ibfk_2` FOREIGN KEY (`subject_id`) REFERENCES `subject` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `students`
+--
+ALTER TABLE `students`
+  ADD CONSTRAINT `students_ibfk_1` FOREIGN KEY (`sem_id`) REFERENCES `semester` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `subject`
+--
+ALTER TABLE `subject`
+  ADD CONSTRAINT `subject_ibfk_1` FOREIGN KEY (`course_id`) REFERENCES `course` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `subject_ibfk_2` FOREIGN KEY (`sem_id`) REFERENCES `semester` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `teacher_subject`
+--
+ALTER TABLE `teacher_subject`
+  ADD CONSTRAINT `teacher_subject_ibfk_1` FOREIGN KEY (`teacher_id`) REFERENCES `teachers` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `teacher_subject_ibfk_2` FOREIGN KEY (`subject_id`) REFERENCES `subject` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;

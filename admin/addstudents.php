@@ -16,6 +16,7 @@ if (!isset($_SESSION['course']) || $_SESSION['course'] < 1) {
         if (empty($_POST['name']) || empty($_POST['admno']) || empty($_POST['father']) || empty($_POST['mother']) || empty($_POST['address']) || empty($_POST['phone']) || empty($_POST['email'])) {
             $error = "Please fill out all the fields";
         } else {
+            $flag = 0;
             $name = $conn->real_escape_string($_POST['name']);
             $admno = $conn->real_escape_string($_POST['admno']);
             $father = $conn->real_escape_string($_POST['father']);
@@ -23,17 +24,30 @@ if (!isset($_SESSION['course']) || $_SESSION['course'] < 1) {
             $address = $conn->real_escape_string($_POST['address']);
             $phone = $conn->real_escape_string($_POST['phone']);
             $email = $conn->real_escape_string($_POST['email']);
-            $parent_pass = password_hash($phone, PASSWORD_DEFAULT);
+            $parent_pass = password_hash($_POST['phone'], PASSWORD_DEFAULT);
             $sql = "INSERT INTO students (name, admn_no, father_name, mother_name, address, phone, email, course_id, sem_id, parent_pass)
             VALUES ('$name', '$admno', '$father', '$mother', '$address', '$phone', '$email', '$course_id', '1', '$parent_pass')";
-            mysqli_query($conn, $sql);
-            $error = $name." entered successfully into records";
-            $student_id = mysqli_fetch_assoc(mysqli_query($conn, "SELECT id from students WHERE admn_no='$admno'"))['id'];
-            $result = mysqli_query($conn, "SELECT id from subject WHERE sem_id=1");
-            while($row = mysqli_fetch_assoc($result)){
-                $marksql = "INSERT INTO marks (student_id, subject_id, marks) VALUES ('$student_id', '".$row['id']."', 0)";
-                mysqli_query($conn, $marksql);
-            }   
+            $select_query = "SELECT admn_no FROM students";
+            $result = mysqli_query($conn, $select_query);
+            while ($row = mysqli_fetch_assoc($result)) {
+                if ($row['admn_no'] == $_POST['admno']) {
+                    $error = "Admission number already exist";
+                    $flag = 1;
+                }
+            }
+            if ($flag == 0) {
+                if (mysqli_query($conn, $sql)) {
+                    $error = $name . " entered successfully into records";
+                    $student_id = mysqli_fetch_assoc(mysqli_query($conn, "SELECT id from students WHERE admn_no='$admno'"))['id'];
+                    $result = mysqli_query($conn, "SELECT id from subject WHERE sem_id=1");
+                    while ($row = mysqli_fetch_assoc($result)) {
+                        $marksql = "INSERT INTO marks (student_id, subject_id, marks) VALUES ('$student_id', '" . $row['id'] . "', 0)";
+                        mysqli_query($conn, $marksql);
+                    }
+                } else {
+                    $error = "Something failed. Please try again.";
+                }
+            }
         }
     }
     ?>
@@ -55,7 +69,7 @@ if (!isset($_SESSION['course']) || $_SESSION['course'] < 1) {
                             <a href="dashboard.php" class="btn btn-warning">Admin Dashboard</a>
                         </li>
                         <li class="nav-item mr-2">
-                            <a href="logout.php"class="btn btn-danger">Sign out</a>
+                            <a href="logout.php" class="btn btn-danger">Sign out</a>
                         </li>
                     </ul>
                 </div>

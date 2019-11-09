@@ -62,7 +62,7 @@ if (isset($_SESSION['parent'])) {
                     </div>
                     <div class="form-group">
                         <label>Password</label>
-                        <input type="password" name="password" class="form-control" placeholder="Password">
+                        <input type="password" name="password" class="form-control" placeholder="The default password is your phone number">
                     </div>
                     <input type="submit" class="btn btn-primary" value="Submit" />
                 </form>

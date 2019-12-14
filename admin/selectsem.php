@@ -75,6 +75,7 @@ if (!isset($_SESSION['admin'])) {
                 </div>
             </div>
         </div>
+        <?php include '../footer.php'; ?>
     </body>
 <?php
 }

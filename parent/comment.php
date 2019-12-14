@@ -69,6 +69,7 @@ if (!isset($_SESSION['parent'])) {
                 </div>
             </div>
         </div>
+        <?php include '../footer.php'; ?>
     </body>
 <?php
 }

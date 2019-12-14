@@ -48,7 +48,7 @@ if (isset($_SESSION['parent'])) {
             </div>
         </div>
     </nav>
-    <div class="container-fluid">
+    <div class="container-fluid parent-bg">
         <div class="row">
             <div class="col-md-4 offset-4 cred-container">
                 <div class="col-md-12 text-center text-info">
@@ -69,6 +69,7 @@ if (isset($_SESSION['parent'])) {
             </div>
         </div>
     </div>
+    
 </body>
 
 </html>

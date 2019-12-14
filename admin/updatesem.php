@@ -85,7 +85,7 @@ if (!isset($_SESSION['previous']) || !$_SESSION['previous']) {
                 </div>
             </div>
         </div>
-
+        <?php include '../footer.php'; ?>
     </body>
 <?php
 }

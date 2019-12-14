@@ -20,9 +20,9 @@ if (!isset($_SESSION['teacher'])) {
     $data[] = $row;
   }
   if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $_SESSION['course'] = $_POST[course];
-    $_SESSION['sem'] = $_POST[sem];
-    $_SESSION['subject'] = $_POST[subject];
+    $_SESSION['course'] = $_POST['course'];
+    $_SESSION['sem'] = $_POST['sem'];
+    $_SESSION['subject'] = $_POST['subject'];
     echo '<script type="text/javascript">
                     window.location = "addmarks.php"
                     </script>';
@@ -102,6 +102,7 @@ if (!isset($_SESSION['teacher'])) {
         </div>
       </form>
     </div>
+    <?php include '../footer.php'; ?>
   </body>
 <?php
 }

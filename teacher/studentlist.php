@@ -72,7 +72,7 @@ if (!isset($_SESSION['teacher'])) {
                 </div>
             </div>
         </div>
-
+        <?php include '../footer.php'; ?>
     </body>
 <?php
 }

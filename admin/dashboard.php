@@ -30,7 +30,7 @@ if (!isset($_SESSION['admin'])) {
                 </div>
             </div>
         </nav>
-        <div class="container">
+        <div class="container mb-5">
             <div class="row">
                 <div class="col-md-6 offset-3 text-center mt-4">
                     <h2>Admin Dashboard</h2>
@@ -78,6 +78,7 @@ if (!isset($_SESSION['admin'])) {
 
             </div>
         </div>
+        <?php include '../footer.php'; ?>
     </body>
 <?php
 }

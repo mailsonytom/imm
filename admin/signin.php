@@ -47,10 +47,10 @@ if (isset($_SESSION['admin'])) {
             </div>
         </div>
     </nav>
-    <div class="container-fluid home-cover">
+    <div class="container-fluid admin-bg">
         <div class="row">
             <div class="col-md-4 offset-4 cred-container">
-                <div class="col-md-12 text-center text-info">
+                <div class="col-md-12 text-center text-light">
                     <h3>Administrator Sign in</h3>
                 </div>
                 <span class="error"><?php echo $error; ?></span>
@@ -68,6 +68,7 @@ if (isset($_SESSION['admin'])) {
             </div>
         </div>
     </div>
+    <?php include '../footer.php'; ?>
 </body>
 
 </html>

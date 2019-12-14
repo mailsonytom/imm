@@ -98,7 +98,7 @@ while ($sub_row = mysqli_fetch_assoc($sub_result)) {
         </div>
 
     </div>
-
+    <?php include '../footer.php'; ?>
 </body>
 <?php
 ?>

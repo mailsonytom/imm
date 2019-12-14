@@ -172,6 +172,7 @@ if (!isset($_SESSION['course']) || $_SESSION['course'] < 1) {
                 </div>
             </div>
         </div>
+        <?php include '../footer.php'; ?>
     </body>
 <?php
 }

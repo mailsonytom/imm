@@ -14,8 +14,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <title>Internal Mark Management</title>
 <link rel="stylesheet" type="text/css" href="../assets/css/bootstrap.css">
 <link rel="stylesheet" type="text/css" href="../assets/css/style.css">
-<script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
-<script src="../assets/js/bootstrap.min.js"></script>
 </head>
 
 <body>
@@ -34,9 +32,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             </div>
         </div>
     </nav>
+    <div class=" mark-cover">
+    </div>
     <div class="container">
         <div class="row">
-            <div class=" col-md-4 mt-5 form-group">
+            
+            <div class=" col-md-8 mt-5 form-group">
+            <h6>Enter your admission number to find your internal mark</h6>
                 <form action="" method="POST">
                     <input class="form-control" placeholder="Enter admission number" type="text" name="admno" value="<?php echo $admn_no; ?>">
                     <input type="submit" class="form-control btn btn-primary mt-2" value="Get marks" />
@@ -70,6 +72,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         </div>
     </div>
     </div>
+    <?php include '../footer.php'; ?>
 
 </body>
 <?php

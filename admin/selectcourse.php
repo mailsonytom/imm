@@ -42,8 +42,8 @@ if (!isset($_SESSION['admin'])) {
                 </div>
             </div>
         </nav>
-        <div class="container">
-            <div class="row mt-5">
+        <div class="container-fluid admin-bg-scourse">
+            <div class="row mt-0 pt-4">
                 <div class="col-md-6 offset-3 text-center">
                     <h3>Select the course</h3>
                 </div>

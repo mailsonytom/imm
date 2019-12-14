@@ -64,6 +64,46 @@ body {
     height: 100vh;
 }
 
+.teacher-bg-selectsub {
+    background-image: url(../images/teachersub.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    color: #fff;
+    height: 60vh;
+}
+
+.teacher-bg-selectsem {
+    background-image: url(../images/teachersem.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    color: #fff;
+    height: 60vh;
+}
+
+.admin-bg-scourse {
+    background-image: url(../images/admincourse.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    color: #fff;
+    height: 60vh;
+}
+
+.admin-bg-sem {
+    background-image: url(../images/adminsem.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    color: #fff;
+    height: 60vh;
+}
+
+.bg-assignsub {
+    background-image: url(../images/assignsub.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    color: #fff;
+    height: 60vh;
+}
+
 
 /* Footer styling  */
 

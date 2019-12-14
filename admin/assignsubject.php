@@ -14,7 +14,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (mysqli_num_rows(mysqli_query($conn, $sql)) == 0) {
         $insert_sql = "INSERT INTO teacher_subject (teacher_id, subject_id) VALUES ('$teacher', '$subject')";
         mysqli_query($conn, $insert_sql);
-        $error = "Successfully assigned ".$subject_name;
+        $error = "Successfully assigned";
     } else {
         $error = "This subject is already assigned to the teacher";
     }
@@ -57,7 +57,7 @@ while ($sub_row = mysqli_fetch_assoc($sub_result)) {
             </div>
         </div>
     </nav>
-    <div class="container">
+    <div class="container-fluid bg-assignsub">
         <div class="row">
             <div class="col-md-8 offset-2 mt-5">
                 <h3 class="text-center">Assign subjects for teachers</h3>

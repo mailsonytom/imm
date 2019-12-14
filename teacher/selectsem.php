@@ -48,8 +48,8 @@ if (!isset($_SESSION['teacher'])) {
                 </div>
             </div>
         </nav>
-        <div class="container">
-            <div class="row mt-5">
+        <div class="container-fluid teacher-bg-selectsem">
+            <div class="row mt-0">
                 <div class="col-md-6 offset-3 text-center">
                     <h3>Select the course</h3>
                 </div>

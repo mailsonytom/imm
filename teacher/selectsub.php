@@ -52,7 +52,7 @@ if (!isset($_SESSION['teacher'])) {
         </div>
       </div>
     </nav>
-    <div class="container">
+    <div class="container-fluid teacher-bg-selectsub" >
       <div class="row">
         <div class="col-md-6 offset-3 mt-5">
           <h3 class="text-center">Select Course, Semester, and Subject</h3>

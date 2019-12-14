@@ -6,6 +6,10 @@ if (!isset($_SESSION['parent'])) {
                  </script>';
 } else {
     $admn_no = $_SESSION['admno'];
+    $namesql = "SELECT name FROM students WHERE admn_no='$admn_no'";
+    $nameresult = mysqli_query($conn, $namesql);
+    $namerow = mysqli_fetch_assoc($nameresult);
+    $sname = $namerow['name'];
     $sql = "SELECT * FROM marks INNER JOIN students ON marks.student_id=students.id INNER JOIN subject 
     ON marks.subject_id=subject.id WHERE students.admn_no='$admn_no' AND subject.sem_id=students.sem_id";
     $result = mysqli_query($conn, $sql);
@@ -27,6 +31,9 @@ if (!isset($_SESSION['parent'])) {
                 <a class="navbar-brand brand font-weight-bold" href="">IMM</a>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav ml-auto">
+                    <li class="nav-item mr-2">
+                            <a href="comment.php" class="btn btn-outline-warning">Comment</a>
+                        </li>
                         <li class="nav-item mr-2">
                             <a href="logout.php" class="btn btn-danger">Sign out</a>
                         </li>
@@ -36,6 +43,10 @@ if (!isset($_SESSION['parent'])) {
         </nav>
         <div class="container">
             <div class="row">
+                <h3>Student Name: <?php echo $sname; ?></h3>
+            </div>
+            <div class="row">
+
                 <table class="table">
                     <div class="col-md-8 offset-2 mt-5">
                         <h3 class="text-center">Marks</h3>

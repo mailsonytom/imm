@@ -8,7 +8,7 @@ if (!isset($_SESSION['teacher'])) {
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $teacher_name = mysqli_fetch_assoc(mysqli_query($conn, "SELECT name FROM teachers WHERE id=" . $_SESSION['teacher']))['name'];
         $student_id = $_POST['student'];
-        $teacher_id = $_SESSION['user_id'];
+        $teacher_id = $_SESSION['teacher'];
         $comment = $conn->real_escape_string($_POST['comment']);
         date_default_timezone_set("Asia/Calcutta");
         $commentdate = date('d-m-Y H:i:s');
